@@ -619,7 +619,7 @@ a {
 
 .places .main-places {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
 }
 
@@ -996,113 +996,167 @@ a {
     }
 }
 
+.packages .packages-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.packages .packages-wrapper i {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+  flex-shrink: 0;
+}
+
 .packages .main-packages {
-    flex-wrap: wrap;
-    gap: 15px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  padding-bottom: 10px;
 }
 
 .packages .main-packages .box {
-    box-shadow: 0 0 10px #ddd;
-    width: 350px;
-    transition: var(--main-transition);
+  width: 300px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
 .packages .main-packages .box:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .packages .main-packages .box .image {
-    background-position: center;
-    background-size: cover;
-    min-height: 250px;
+  background-position: center;
+  background-size: cover;
+  min-height: 250px;
 }
 
 .packages .main-packages .box:first-of-type .image {
-    background-image: url(../Images/packages\ \(1\).jpg);
+  background-image: url(../Images/packages\ \(1\).jpg);
 }
 
 .packages .main-packages .box:nth-of-type(2) .image {
-    background-image: url(../Images/packages\ \(2\).jpg);
+  background-image: url(../Images/packages\ \(2\).jpg);
 }
 
 .packages .main-packages .box:last-of-type .image {
-    background-image: url(../Images/packages\ \(3\).jpg);
+  background-image: url(../Images/packages\ \(3\).jpg);
 }
 
 .packages .main-packages .box .text {
-    padding: 20px;
+  padding: 20px;
 }
 
 .packages .main-packages .box .text > p {
-    color: var(--main-color);
-    background-image: linear-gradient(to left, var(--third-color) 30%, var(--four-color));
-    width: fit-content;
-    padding: 5px 30px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    margin-top: -35px;
+  color: var(--main-color);
+  background-image: linear-gradient(to left, var(--third-color) 30%, var(--four-color));
+  width: fit-content;
+  padding: 5px 30px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  margin-top: -35px;
 }
 
 .packages .main-packages .box .text h3 {
-    color: black;
-    font-size: 20px;
-    margin: 20px 0 15px;
+  color: black;
+  font-size: 20px;
+  margin: 20px 0 15px;
 }
 
 .packages .main-packages .box .text h3 + div {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    margin-top: 10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .packages .main-packages .box .text .info {
-    flex: 1;
-    border-right: 1px solid #777;
+  flex: 1;
+  border-right: 1px solid #777;
 }
 
 .packages .main-packages .box .text .info span {
-    display: block;
+  display: block;
 }
 
 .packages .main-packages .box .text .info span:not(:last-of-type) {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .packages .main-packages .box .text .info span i {
-    color: var(--third-color);
-    font-size: 13px;
-    margin-right: 10px;
+  color: var(--third-color);
+  font-size: 13px;
+  margin-right: 10px;
 }
 
 .packages .main-packages .box .text .price {
-    text-align: center;
-    padding-left: 20px;
+  text-align: center;
+  padding-left: 20px;
 }
 
-.packages .main-packages .box .text .price span  {
-    display: block;
+.packages .main-packages .box .text .price span {
+  display: block;
 }
 
 .packages .main-packages .box .text .price span:first-child {
-    text-transform: uppercase;
-    font-size: 12px;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .packages .main-packages .box .text .price span:last-child {
-    font-size: 35px;
-    color: var(--four-color);
-    font-weight: bold;
-    position: relative;
+  font-size: 35px;
+  color: var(--four-color);
+  font-weight: bold;
+  position: relative;
 }
 
 .packages .main-packages .box .text .price span:last-child::before {
-    content: "B";
-    position: absolute;
-    left: -15px;
-    top: 0;
-    color: var(--four-color);
-    font-size: 20px;
+  content: "B";
+  position: absolute;
+  left: -15px;
+  top: 0;
+  color: var(--four-color);
+  font-size: 20px;
+}
+
+/* Extra responsiveness for small screens */
+@media (max-width: 768px) {
+  .packages .packages-wrapper {
+    padding: 0.5rem;
+  }
+
+  .packages .main-packages {
+    gap: 10px;
+  }
+
+  .packages .main-packages .box {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .packages .main-packages .box .text h3 {
+    font-size: 18px;
+  }
+
+  .packages .main-packages .box .text .price span:last-child {
+    font-size: 28px;
+  }
 }
 
 .packages .question {
